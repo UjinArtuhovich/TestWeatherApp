@@ -10,8 +10,7 @@ import CoreLocation
 class ViewController: UIViewController {
     private var dailyWeather = [Datum]()
     private var hourlyWeather = [Currently]()
-    private var coordinate =  CLLocationCoordinate2D(latitude: Location.latitude, longitude: Location.longitude)
-    
+    private var coordinate: CLLocationCoordinate2D!
     private var weatherAppViewModel: WeatherAppViewModel!
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
@@ -31,7 +30,14 @@ class ViewController: UIViewController {
             // MARK: Checking Internet connection
             if InternetObserver.shared.isInternetAvailable() {
                 self.coordinate = location
+                // MARK: Save in CoreData
+                CityName.shared.getCityName(location: location) { cityName in
+                    DataBaseManager.shareInstance.saveContext(latitudeData: location.latitude, longitudeData: location.longitude, cityName: cityName)
+                }
             } else {
+                let productDataBase = DataBaseManager.shareInstance.fetchData()
+                self.coordinate = CLLocationCoordinate2D(latitude: productDataBase.latitudeData.first!.data, longitude: productDataBase.longitudeData.first!.data)
+                HeaderView.shared.cityName = productDataBase.cityName.first!.name
                 self.presentCustomAlertController(withTitle: "Error", message: "No internet connection", style: .alert)
             }
             // MARK: Building view with user location

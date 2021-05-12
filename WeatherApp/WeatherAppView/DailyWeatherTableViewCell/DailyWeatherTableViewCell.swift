@@ -19,7 +19,7 @@ class DailyWeatherTableViewCell: UITableViewCell {
             guard let data = data else {return}
             nightTLabel.text = String(Int(data.temperatureMin))
             dayTLabel.text = String(Int(data.temperatureMax))
-            weatherImage.image = UIImage(systemName: WeatherIcon.shared.getIcon(type: data.icon))
+            weatherImage.image = UIImage(systemName: WeatherIcon.shared.getIcon(type: data.icon.rawValue))
             humidityLabel.text = "\(Int(data.humidity*100))%"
             dayLabel.text = Formatter.shared.getDayForDate(Date(timeIntervalSince1970: Double(data.time)), format: "EEEE")
         }

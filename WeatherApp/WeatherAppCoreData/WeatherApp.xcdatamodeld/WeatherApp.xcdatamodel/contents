@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="City" representedClassName="City" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Latitude" representedClassName="Latitude" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Longitude" representedClassName="Longitude" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="City" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="Latitude" positionX="-54" positionY="0" width="128" height="58"/>
+        <element name="Longitude" positionX="-36" positionY="18" width="128" height="58"/>
+    </elements>
+</model>

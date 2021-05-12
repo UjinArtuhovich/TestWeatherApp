@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 import CoreLocation
 class HeaderView {
-    
     static let shared = HeaderView()
+    var cityName: String!
     func createHeaderView(view: UIView, weather: Datum) -> UIView {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width-120))
         
@@ -54,7 +54,8 @@ class HeaderView {
                 }
             }
         } else {
-            locationLabel.text = "Minsk"
+            
+            locationLabel.text = cityName
         }
         temperatureLabel.text = "\(Int(weather.temperatureMax - weather.temperatureLow))°"
         temperaturesLabel.text = "H:\(Int(weather.temperatureMax))° L:\(Int(weather.temperatureLow))°"
